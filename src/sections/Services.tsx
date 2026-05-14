@@ -184,21 +184,40 @@ export default function Services() {
             <div key={plan.name} className="relative flex flex-col h-full w-full max-w-md mx-auto">
               {/* Floating Crown for Premium - Outside card */}
               {plan.featured && (
-                <div
-                  className="absolute -top-32 -right-32 md:-top-36 md:-right-36 z-30 pointer-events-none"
-                  style={{
-                    width: '280px',
-                    height: '280px',
-                    transform: 'rotate(30deg)',
-                    animation: 'float-crown 3s ease-in-out infinite',
-                  }}
-                >
-                  <img
-                    src="/coroana.png"
-                    alt="Crown"
-                    className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]"
-                  />
-                </div>
+                <>
+                  {/* Mobile Crown */}
+                  <div
+                    className="absolute -top-16 -right-16 z-30 pointer-events-none md:hidden"
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      transform: 'rotate(30deg)',
+                      animation: 'float-crown 3s ease-in-out infinite',
+                    }}
+                  >
+                    <img
+                      src="/coroana.png"
+                      alt="Crown"
+                      className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]"
+                    />
+                  </div>
+                  {/* Desktop Crown */}
+                  <div
+                    className="absolute -top-32 -right-32 z-30 pointer-events-none hidden md:block"
+                    style={{
+                      width: '420px',
+                      height: '420px',
+                      transform: 'rotate(30deg)',
+                      animation: 'float-crown 3s ease-in-out infinite',
+                    }}
+                  >
+                    <img
+                      src="/coroana.png"
+                      alt="Crown"
+                      className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]"
+                    />
+                  </div>
+                </>
               )}
             <div
               className={`service-card relative border rounded-3xl overflow-hidden transition-all duration-400 flex flex-col flex-grow w-full max-w-md mx-auto ${
