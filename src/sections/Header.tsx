@@ -44,11 +44,11 @@ export default function Header({ scrollTo }: HeaderProps) {
 
   return (
     <header
-      className={`header-container fixed top-0 left-0 right-0 z-50 h-32 md:h-40 flex items-center justify-center transition-all duration-300 ${
+      className={`header-container fixed top-0 left-0 right-0 z-50 h-36 md:h-44 flex items-center justify-center transition-all duration-300 overflow-hidden ${
         scrolled ? 'bg-black/92 backdrop-blur-xl' : 'bg-transparent'
       }`}
     >
-      <div className="w-full max-w-[1280px] px-6 flex items-center justify-center">
+      <div className="w-full max-w-[1280px] px-6 flex items-center justify-center overflow-hidden">
         <div className="flex items-center gap-2">
           {/* Left nav - desktop */}
           <nav className="hidden md:flex items-center">
@@ -69,11 +69,11 @@ export default function Header({ scrollTo }: HeaderProps) {
           </nav>
 
           {/* Logo - centered on all screens */}
-          <button onClick={() => handleNav('#hero')} className="flex-shrink-0 mx-auto md:mx-6">
+          <button onClick={() => handleNav('#hero')} className="flex-shrink-0 mx-auto md:mx-6 flex items-center justify-center" style={{ maxHeight: '100%' }}>
             <img
               src="/consultfinanciar.png"
               alt="ConsultCredit"
-              className="h-48 md:h-80 w-auto object-contain"
+              className="h-28 md:h-36 w-auto object-contain max-h-[7rem] md:max-h-[9rem]"
             />
           </button>
 
