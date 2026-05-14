@@ -74,16 +74,19 @@ export default function BiroulDeCredite() {
       style={{
         backgroundImage: 'url(/birou-contract.jpg)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        WebkitBackgroundSize: 'cover',
+        MozBackgroundSize: 'cover',
+        OBackgroundSize: 'cover'
       }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/80" />
-      <div className="max-w-[1280px] mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-[45%_55%] gap-12 md:gap-16 items-center">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 relative z-10">
+        <div className="grid md:grid-cols-[45%_55%] gap-8 md:gap-16 items-center">
           {/* Image */}
-          <div className="bc-image">
+          <div className="bc-image order-1 md:order-1">
             <img
               src="/reclama.png"
               alt="Birou ConsultCredit"
@@ -92,23 +95,23 @@ export default function BiroulDeCredite() {
           </div>
 
           {/* Text */}
-          <div className="bc-text">
-            <h2 className="text-[40px] md:text-[56px] font-bold text-white leading-[1.15]">
+          <div className="bc-text order-2 md:order-2">
+            <h2 className="text-[32px] md:text-[56px] font-bold text-white leading-[1.15]">
               Soluții pentru Biroul de Credite
             </h2>
-            <p className="text-[20px] md:text-[22px] leading-[1.6] text-[#a0a0a0] mt-6">
+            <p className="text-[18px] md:text-[22px] leading-[1.6] text-[#a0a0a0] mt-6">
               Ești înscris la Biroul de Credite și ți-e frică că nu vei mai putea obține un credit? Echipa noastră te poate ajuta cu informații detaliate despre cum funcționează Biroul de Credite și ce pași trebuie să urmezi pentru a-ți îmbunătăți scoringul.
             </p>
-            <p className="text-[20px] md:text-[22px] leading-[1.6] text-[#a0a0a0] mt-4">
+            <p className="text-[18px] md:text-[22px] leading-[1.6] text-[#a0a0a0] mt-4">
               Deși ștergerea din Biroul de Credite nu este imediată, există căi legale și strategii financiare prin care poți reduce impactul negativ și reveni la un profil favorabil. Noi îți oferim un plan personalizat de recuperare financiară.
             </p>
 
             {/* Points */}
-            <div className="bc-points mt-8 space-y-3">
+            <div className="bc-points mt-6 md:mt-8 space-y-3">
               {points.map((point) => (
                 <div key={point} className="bc-point flex items-center gap-3">
-                  <Check size={22} className="text-[#ffffff] flex-shrink-0" />
-                  <span className="text-[18px] md:text-[20px] text-[#fbfbfb]">{point}</span>
+                  <Check size={20} className="text-[#ffffff] flex-shrink-0 md:w-[22px] md:h-[22px]" />
+                  <span className="text-[16px] md:text-[20px] text-[#fbfbfb]">{point}</span>
                 </div>
               ))}
             </div>
