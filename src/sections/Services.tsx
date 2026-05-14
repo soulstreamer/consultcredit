@@ -182,15 +182,15 @@ export default function Services() {
         <div className="service-cards grid md:grid-cols-2 gap-8 items-stretch justify-items-center w-full overflow-hidden">
           {plans.map((plan) => (
             <div key={plan.name} className="relative flex flex-col h-full w-full">
-              {/* Floating Crown for Premium - Outside card */}
+              {/* Floating Crown for Premium - Overlay on card */}
               {plan.featured && (
                 <>
                   {/* Mobile Crown */}
                   <div
-                    className="absolute -top-16 -right-16 z-30 pointer-events-none md:hidden"
+                    className="absolute -top-8 -right-8 z-30 pointer-events-none md:hidden"
                     style={{
-                      width: '200px',
-                      height: '200px',
+                      width: '140px',
+                      height: '140px',
                       transform: 'rotate(30deg)',
                       animation: 'float-crown 3s ease-in-out infinite',
                     }}
@@ -203,10 +203,10 @@ export default function Services() {
                   </div>
                   {/* Desktop Crown */}
                   <div
-                    className="absolute -top-32 -right-32 z-30 pointer-events-none hidden md:block"
+                    className="absolute -top-20 -right-20 z-30 pointer-events-none hidden md:block"
                     style={{
-                      width: '420px',
-                      height: '420px',
+                      width: '280px',
+                      height: '280px',
                       transform: 'rotate(30deg)',
                       animation: 'float-crown 3s ease-in-out infinite',
                     }}
