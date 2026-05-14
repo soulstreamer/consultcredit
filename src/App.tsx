@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router'
 import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -45,7 +45,6 @@ function HomePage({ scrollTo }: { scrollTo: (target: string) => void }) {
 
 function AppContent() {
   const lenisRef = useRef<Lenis | null>(null)
-  const location = useLocation()
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -77,9 +76,6 @@ function AppContent() {
       lenisRef.current.scrollTo(target, { offset: -80 })
     }
   }
-
-  // Don't show header/footer on success/cancel pages
-  const isPaymentPage = location.pathname === '/success' || location.pathname === '/cancel'
 
   return (
     <div className="min-h-screen bg-black text-white font-caveat">
