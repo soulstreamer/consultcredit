@@ -57,7 +57,7 @@ export default function Hero({ scrollTo }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[800px]">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[800px] pb-24 md:pb-16">
         <h1 className="hero-h1 text-[48px] md:text-[72px] font-bold leading-[1.1] text-white">
           Asistență Credit Premium
         </h1>
@@ -75,7 +75,7 @@ export default function Hero({ scrollTo }: HeroProps) {
       {/* Scroll indicator */}
       <button
         onClick={() => scrollTo('#stats')}
-        className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="hero-scroll absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-10"
         style={{ animation: 'scroll-chevron 2s ease-in-out infinite' }}
       >
         <ChevronDown size={32} className="text-[#ffffff]" />

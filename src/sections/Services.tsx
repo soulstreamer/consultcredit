@@ -185,10 +185,10 @@ export default function Services() {
               {/* Floating Crown for Premium - Outside card */}
               {plan.featured && (
                 <div
-                  className="absolute -top-8 -right-8 md:-top-32 md:-right-32 z-30 pointer-events-none overflow-hidden"
+                  className="absolute -top-32 -right-32 md:-top-36 md:-right-36 z-30 pointer-events-none"
                   style={{
-                    width: '120px',
-                    height: '120px',
+                    width: '280px',
+                    height: '280px',
                     transform: 'rotate(30deg)',
                     animation: 'float-crown 3s ease-in-out infinite',
                   }}
