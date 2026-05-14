@@ -47,28 +47,28 @@ export default function Footer({ scrollTo }: FooterProps) {
   return (
     <footer
       ref={footerRef}
-      className="w-full py-16 bg-black border-t border-[#1a1a1a]"
+      className="w-full py-12 md:py-16 bg-black border-t border-[#1a1a1a]"
     >
-      <div className="footer-content max-w-[1280px] mx-auto px-6 flex flex-col items-center">
+      <div className="footer-content max-w-[1280px] mx-auto px-4 md:px-6 flex flex-col items-center">
         {/* Logo */}
-        <button onClick={() => scrollTo('#hero')}>
+        <button onClick={() => scrollTo('#hero')} className="mb-4">
           <img
             src="/consultfinanciar.png"
             alt="ConsultCredit"
-            className="h-48 md:h-60 w-auto object-contain"
+            className="h-32 md:h-60 w-auto object-contain"
           />
         </button>
-        <p className="text-[16px] md:text-[18px] text-[#a0a0a0] mt-3">
+        <p className="text-[14px] md:text-[18px] text-[#a0a0a0] mt-2 text-center">
           Asistență Credit Premium
         </p>
 
         {/* Quick links */}
-        <nav className="flex flex-wrap justify-center gap-6 mt-8">
+        <nav className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 md:mt-8">
           {quickLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => scrollTo(link.target)}
-              className="text-[16px] md:text-[18px] text-[#a0a0a0] hover:text-white transition-colors duration-300"
+              className="text-[14px] md:text-[18px] text-[#a0a0a0] hover:text-white transition-colors duration-300"
             >
               {link.label}
             </button>
@@ -76,12 +76,12 @@ export default function Footer({ scrollTo }: FooterProps) {
         </nav>
 
         {/* Legal links */}
-        <nav className="flex flex-wrap justify-center gap-4 mt-6 pt-6 border-t border-[#1a1a1a]">
+        <nav className="flex flex-wrap justify-center gap-3 md:gap-4 mt-4 md:mt-6 pt-4 md:pt-6 border-t border-[#1a1a1a] w-full max-w-md">
           {legalLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-[14px] md:text-[16px] text-[#666] hover:text-white transition-colors duration-300"
+              className="text-[12px] md:text-[16px] text-[#666] hover:text-white transition-colors duration-300"
             >
               {link.label}
             </a>
@@ -89,7 +89,7 @@ export default function Footer({ scrollTo }: FooterProps) {
         </nav>
 
         {/* Copyright */}
-        <p className="text-[14px] md:text-[16px] text-[#555] mt-10">
+        <p className="text-[12px] md:text-[16px] text-[#555] mt-8 md:mt-10 text-center">
           © 2025 ConsultCredit.ro — Toate drepturile rezervate.
         </p>
       </div>
