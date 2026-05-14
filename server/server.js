@@ -12,11 +12,20 @@ const __dirname = dirname(__filename)
 dotenv.config()
 
 const app = express()
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 10000
 
 // Middleware
 app.use(cors())
 app.use(express.json())
+
+// Serve static files from the dist folder (frontend build)
+app.use(express.static(join(__dirname, '../dist')))
+
+// API routes
+app.use('/api', (req, res, next) => {
+  // API routes handled below
+  next()
+})
 
 // Initialize Stripe with secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_your_key_here', {
@@ -27,6 +36,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_your_key_her
 const PRICE_IDS = {
   standard: process.env.STRIPE_PRICE_STANDARD || 'price_standard_placeholder',
   premium: process.env.STRIPE_PRICE_PREMIUM || 'price_premium_placeholder',
+}
+
+// Get client URL from environment or use request origin
+const getClientUrl = (req) => {
+  return process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`
 }
 
 // Create checkout session endpoint
@@ -67,6 +81,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
       },
     })
 
+    const clientUrl = getClientUrl(req)
+
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
       customer: customer.id,
@@ -78,8 +94,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.CLIENT_URL || 'http://localhost:3000'}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.CLIENT_URL || 'http://localhost:3000'}/cancel`,
+      success_url: `${clientUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${clientUrl}/cancel`,
       metadata: {
         nume: customerName.trim(),
         telefon: phoneNumber,
@@ -170,11 +186,17 @@ app.get('/api/session/:sessionId', async (req, res) => {
   }
 })
 
+// Catch-all handler: send back React's index.html file for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, '../dist/index.html'))
+})
+
 app.listen(port, () => {
-  console.log(`✅ Server running on http://localhost:${port}`)
+  console.log(`✅ Server running on port ${port}`)
   console.log(`📞 Stripe Checkout API ready`)
   console.log(`⚠️  Don't forget to:`)
   console.log(`   1. Create products in Stripe Dashboard`)
-  console.log(`   2. Add STRIPE_SECRET_KEY to .env file`)
-  console.log(`   3. Add price IDs to .env file`)
+  console.log(`   2. Add STRIPE_SECRET_KEY to environment variables`)
+  console.log(`   3. Add price IDs to environment variables`)
+  console.log(`   4. Build the frontend: npm run build`)
 })

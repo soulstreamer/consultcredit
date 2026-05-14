@@ -11,7 +11,7 @@ export default function Success() {
   useEffect(() => {
     if (sessionId) {
       // Fetch session details from backend
-      fetch(`http://localhost:3001/api/session/${sessionId}`)
+      fetch(`/api/session/${sessionId}`)
         .then(res => res.json())
         .then(data => {
           setSessionData(data)
