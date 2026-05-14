@@ -181,7 +181,7 @@ export default function Services() {
         {/* Cards */}
         <div className="service-cards grid md:grid-cols-2 gap-8 items-stretch justify-items-center w-full overflow-hidden">
           {plans.map((plan) => (
-            <div key={plan.name} className="relative flex flex-col h-full w-full max-w-md mx-auto">
+            <div key={plan.name} className="relative flex flex-col h-full w-full">
               {/* Floating Crown for Premium - Outside card */}
               {plan.featured && (
                 <>
@@ -220,7 +220,7 @@ export default function Services() {
                 </>
               )}
             <div
-              className={`service-card relative border rounded-3xl overflow-hidden transition-all duration-400 flex flex-col flex-grow w-full max-w-md mx-auto ${
+              className={`service-card relative border rounded-3xl overflow-hidden transition-all duration-400 flex flex-col flex-grow w-full ${
                 plan.featured
                   ? 'border-[#ffffff] bronze-glow'
                   : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#ffffff] hover:bronze-glow'
