@@ -179,16 +179,16 @@ export default function Services() {
         </div>
 
         {/* Cards */}
-        <div className="service-cards grid md:grid-cols-2 gap-8 items-stretch justify-items-center w-full">
+        <div className="service-cards grid md:grid-cols-2 gap-8 items-stretch justify-items-center w-full overflow-hidden">
           {plans.map((plan) => (
-            <div key={plan.name} className="relative flex flex-col h-full">
+            <div key={plan.name} className="relative flex flex-col h-full w-full max-w-md mx-auto">
               {/* Floating Crown for Premium - Outside card */}
               {plan.featured && (
                 <div
-                  className="absolute -top-16 -right-16 md:-top-32 md:-right-32 z-30 pointer-events-none"
+                  className="absolute -top-8 -right-8 md:-top-32 md:-right-32 z-30 pointer-events-none overflow-hidden"
                   style={{
-                    width: '200px',
-                    height: '200px',
+                    width: '120px',
+                    height: '120px',
                     transform: 'rotate(30deg)',
                     animation: 'float-crown 3s ease-in-out infinite',
                   }}

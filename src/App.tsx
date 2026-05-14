@@ -78,7 +78,7 @@ function AppContent() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-caveat">
+    <div className="min-h-screen bg-black text-white font-caveat overflow-x-hidden w-full max-w-[100vw]">
       <Routes>
         <Route path="/" element={<HomePage scrollTo={scrollTo} />} />
         <Route path="/success" element={<Success />} />
