@@ -249,35 +249,6 @@ export default function Services() {
                     RECOMANDAT
                   </div>
                 )}
-            <div
-              className={`service-card relative border rounded-3xl overflow-hidden transition-all duration-400 flex flex-col flex-grow w-full ${
-                plan.featured
-                  ? 'border-[#ffffff] bronze-glow'
-                  : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#ffffff] hover:bronze-glow'
-              }`}
-            >
-              {/* Video background for Premium */}
-              {plan.featured && (
-                <>
-                  <video
-                    src="/consultant-video.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/70" />
-                </>
-              )}
-              
-              <div className="relative z-10 p-8 md:p-12 flex flex-col flex-grow">
-                {/* Featured badge */}
-                {plan.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#ffffff] to-[#e0e0e0] text-black font-semibold text-[14px] px-6 py-2 rounded-full">
-                    RECOMANDAT
-                  </div>
-                )}
 
                 <plan.icon size={48} className="text-[#ffffff] mb-6 mx-auto" />
 
