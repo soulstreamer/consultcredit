@@ -182,15 +182,22 @@ export default function Services() {
         <div className="service-cards grid md:grid-cols-2 gap-8 items-stretch justify-items-center w-full overflow-hidden">
           {plans.map((plan) => (
             <div key={plan.name} className="relative flex flex-col h-full w-full">
-              {/* Floating Crown for Premium - Overlay on card */}
+            <div
+              className={`service-card relative border rounded-3xl overflow-visible transition-all duration-400 flex flex-col flex-grow w-full ${
+                plan.featured
+                  ? 'border-[#ffffff] bronze-glow'
+                  : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#ffffff] hover:bronze-glow'
+              }`}
+            >
+              {/* Floating Crown for Premium - Overlay on card corner */}
               {plan.featured && (
                 <>
                   {/* Mobile Crown */}
                   <div
-                    className="absolute -top-8 -right-8 z-30 pointer-events-none md:hidden"
+                    className="absolute -top-16 -right-16 md:hidden z-30 pointer-events-none"
                     style={{
-                      width: '140px',
-                      height: '140px',
+                      width: '200px',
+                      height: '200px',
                       transform: 'rotate(30deg)',
                       animation: 'float-crown 3s ease-in-out infinite',
                     }}
@@ -203,10 +210,10 @@ export default function Services() {
                   </div>
                   {/* Desktop Crown */}
                   <div
-                    className="absolute -top-20 -right-20 z-30 pointer-events-none hidden md:block"
+                    className="absolute -top-32 -right-32 hidden md:block z-30 pointer-events-none"
                     style={{
-                      width: '280px',
-                      height: '280px',
+                      width: '420px',
+                      height: '420px',
                       transform: 'rotate(30deg)',
                       animation: 'float-crown 3s ease-in-out infinite',
                     }}
@@ -219,6 +226,29 @@ export default function Services() {
                   </div>
                 </>
               )}
+
+              {/* Video background for Premium */}
+              {plan.featured && (
+                <>
+                  <video
+                    src="/consultant-video.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/70" />
+                </>
+              )}
+
+              <div className="relative z-10 p-8 md:p-12 flex flex-col flex-grow">
+                {/* Featured badge */}
+                {plan.featured && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#ffffff] to-[#e0e0e0] text-black font-semibold text-[14px] px-6 py-2 rounded-full">
+                    RECOMANDAT
+                  </div>
+                )}
             <div
               className={`service-card relative border rounded-3xl overflow-hidden transition-all duration-400 flex flex-col flex-grow w-full ${
                 plan.featured
