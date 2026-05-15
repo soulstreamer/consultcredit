@@ -74,6 +74,11 @@ export default function Header({ scrollTo }: HeaderProps) {
               src="/consultfinanciar.png"
               alt="ConsultCredit"
               className="h-28 md:h-36 w-auto object-contain max-h-[7rem] md:max-h-[9rem]"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              width="400"
+              height="144"
             />
           </button>
 

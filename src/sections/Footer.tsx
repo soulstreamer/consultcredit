@@ -56,6 +56,10 @@ export default function Footer({ scrollTo }: FooterProps) {
             src="/consultfinanciar.png"
             alt="ConsultCredit"
             className="h-32 md:h-60 w-auto object-contain"
+            loading="lazy"
+            decoding="async"
+            width="400"
+            height="240"
           />
         </button>
         <p className="text-[14px] md:text-[18px] text-[#a0a0a0] mt-2 text-center">

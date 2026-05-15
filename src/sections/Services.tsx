@@ -199,6 +199,11 @@ export default function Services() {
                       src="/coroana.png"
                       alt="Crown"
                       className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      width="200"
+                      height="200"
                     />
                   </div>
                   {/* Desktop Crown */}
@@ -215,6 +220,11 @@ export default function Services() {
                       src="/coroana.png"
                       alt="Crown"
                       className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      width="420"
+                      height="420"
                     />
                   </div>
                 </>
