@@ -41,15 +41,19 @@ export default function Hero({ scrollTo }: HeroProps) {
       ref={sectionRef}
       className="relative w-full h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video background */}
+      {/* Video background - WebM for better compression, MP4 as fallback */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
         poster="/birou-elegant.jpg"
       >
+        {/* WebM format - better compression for mobile */}
+        <source src="/hero-video.webm" type="video/webm" />
+        {/* MP4 fallback for older browsers */}
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
