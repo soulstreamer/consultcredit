@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ChevronDown } from 'lucide-react'
 
@@ -8,6 +8,18 @@ interface HeroProps {
 
 export default function Hero({ scrollTo }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
+  useEffect(() => {
+    // Force video to play immediately
+    const video = videoRef.current
+    if (video) {
+      video.play().catch(() => {
+        // Auto-play was prevented, will try again on user interaction
+      })
+    }
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,19 +55,27 @@ export default function Hero({ scrollTo }: HeroProps) {
     >
       {/* Video background - WebM for better compression, MP4 as fallback */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover"
-        poster="/birou-elegant.jpg"
+        preload="auto"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+        disablePictureInPicture
+        disableRemotePlayback
+        onLoadedData={() => setVideoLoaded(true)}
+        onPlaying={() => setVideoLoaded(true)}
+        style={{ backgroundColor: 'transparent' }}
       >
         {/* WebM format - better compression for mobile */}
         <source src="/hero-video.webm" type="video/webm" />
         {/* MP4 fallback for older browsers */}
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
+      
+      {/* Fallback black background while video loads */}
+      <div className="absolute inset-0 bg-black" style={{ zIndex: -1 }} />
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />

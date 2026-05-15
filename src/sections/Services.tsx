@@ -181,15 +181,8 @@ export default function Services() {
         {/* Cards */}
         <div className="service-cards grid md:grid-cols-2 gap-8 items-stretch justify-items-center w-full overflow-visible">
           {plans.map((plan) => (
-            <div key={plan.name} className="relative flex flex-col h-full w-full">
-              <div
-                className={`service-card relative border rounded-3xl overflow-visible transition-all duration-400 flex flex-col flex-grow w-full ${
-                  plan.featured
-                    ? 'border-[#ffffff] bronze-glow'
-                    : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#ffffff] hover:bronze-glow'
-                }`}
-              >
-              {/* Floating Crown for Premium - Overlay on card corner */}
+            <div key={plan.name} className="relative flex flex-col h-full w-full overflow-visible">
+              {/* Floating Crown for Premium - Outside card to stay visible */}
               {plan.featured && (
                 <>
                   {/* Mobile Crown */}
@@ -226,6 +219,13 @@ export default function Services() {
                   </div>
                 </>
               )}
+              <div
+                className={`service-card relative border rounded-3xl overflow-hidden transition-all duration-400 flex flex-col flex-grow w-full ${
+                  plan.featured
+                    ? 'border-[#ffffff] bronze-glow'
+                    : 'bg-[#0a0a0a] border-[#1a1a1a] hover:border-[#ffffff] hover:bronze-glow'
+                }`}
+              >
 
               {/* Video background for Premium */}
               {plan.featured && (
@@ -236,9 +236,9 @@ export default function Services() {
                     loop
                     muted
                     playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] object-cover rounded-[22px]"
                   />
-                  <div className="absolute inset-0 bg-black/70" />
+                  <div className="absolute inset-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] bg-black/70 rounded-[22px]" />
                 </>
               )}
 
